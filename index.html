@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agencia de Seguros Servicio</title>
+<meta name="description" content="Agencia de seguros Servizio en Bogotá. Cotiza seguros de autos, hogar, empresas, ARL y más con asesoría personalizada.">
+<meta name="keywords" content="seguros, seguros Bogotá, seguros autos, seguros hogar, ARL, seguros empresas, cotizar seguros, agencia de seguros">
+<meta name="author" content="Agencia de Seguros Servizio">
+<meta name="author" content="Agencia de Seguros Servicio">
+<meta name="author" content="Agencia de Seguros">
+<meta name="author" content="Seguros">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Agencia de Seguros Servicio">
+<meta property="og:description" content="Cotiza seguros de manera rápida y personalizada en Bogotá.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+header {
+    background-color: #04389d;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header img {
+    width: 60px;
+    margin-right: 10px;
+}
+header h1 {
+    color: #f35b26;
+}
+section:first-of-type {
+    position: relative;
+     z-index: 2;
+}
+
+section:first-of-type::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    z-index: 0;
+}
+section:first-of-type * {
+    position: relative;
+    z-index: 2;
+}
+section {
+    padding: 100px 40px;
+    text-align: center;
+}
+section:first-of-type {
+    min-height: 120vh;
+    background-image: url("img/fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#quienes {
+    min-height: 100vh;
+    background-color: #e3e8f7;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#empresas {
+    min-height: 100vh;
+    background-color: #004aad;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#beneficios {
+    min-height: 100vh;
+    background-color: #f35b26;
+    text-align: center;
+    padding: 100px 40px;
+}
+
+.beneficios-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.beneficios-carrusel {
+    overflow: hidden;
+    width: 650px;
+}
+
+.beneficios-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.beneficio {
+    min-width: 650px;
+    text-align: center;
+}
+
+.beneficio img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover; 
+    margin-bottom: 20px;
+}
+
+.beneficio p {
+    font-size: 26px;
+    font-weight: 600;
+}
+#seguro {
+    min-height: 100vh;
+    background-color: #e3e8f7;
+    text-align: center;
+    padding: 100px 40px;
+}
+
+#seguro h2 {
+    font-size: 40px;
+    margin-bottom: 50px;
+}
+
+.seguros-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.seguro-box {
+    background: white;
+    width: 350px;
+    padding: 40px;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.seguro-box:hover {
+    transform: translateY(-10px);
+}
+.seguro-box h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.seguro-box ul {
+    list-style: disc; /* 🔥 puntos en vez de rayas */
+    text-align: left;
+    padding-left: 20px;
+}
+
+.seguro-box li {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+#cotizar {
+    min-height: 100vh;
+    background-color: #f5f7ff;
+    text-align: center;
+    padding: 100px 40px;
+}
+
+.cotizar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.formulario {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formulario input,
+.formulario textarea {
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+}
+
+.formulario select {
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    font-size: 16px;
+}
+
+textarea {
+    height: 100px;
+    resize: none;
+}
+
+button {
+    background-color: #04389d;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #032b75;
+}
+
+.mensaje-error {
+    display: none;
+    color: red;
+    font-size: 14px;
+}
+.carrusel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: max-content;
+}
+.carrusel {
+    overflow: hidden;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+}
+.track img {
+    min-width: 500px;
+}
+.carrusel img {
+    width: 500px;
+    height: 300px;
+    object-fit: contain;
+    flex-shrink: 0;
+     display: block;
+}
+.track img {
+    min-width: 500px;
+    max-width: 500px;
+}
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    background-color: #25D366;
+    padding: 10px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+     z-index: 9999;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    height: 100%;
+    background-color: #004aad;
+    color: white;
+    padding-top: 60px;
+    transition: 0.3s;
+}
+.menu-btn {
+    position: fixed;
+    top: 12px;   
+    left: 15px;
+    font-size: 40px;
+    color: black;
+
+    cursor: pointer;
+    z-index: 1000;
+}
+.menu-container:hover .sidebar {
+    left: 0;
+}
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+.menu-container {
+    position: relative;
+    z-index: 10000;
+}
+.sidebar a:hover {
+    background-color: #f35b26;
+}
+html {
+    scroll-behavior: smooth;
+}
+footer {
+    background-color: #04389d;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+.copy {
+    margin-top: 10px;
+    font-size: 12px;
+}
+</style>
+</head>
+<body>
+<div class="menu-container">
+    <div class="menu-btn">☰</div>
+
+    <div class="sidebar">
+        <a href="#">Inicio</a>
+        <a href="#quienes">¿Quiénes somos?</a>
+        <a href="#empresas">Empresas Aliadas</a>
+        <a href="#beneficios">Beneficios de cotizar con nosotros</a>
+        <a href="#seguro">¿Que seguro buscas?</a>
+        <a href="#cotizar">Quiero cotizar</a>
+    </div>
+</div>
+
+<header>
+    <img src="img/logo.jpg">
+    <h1>Agencia de Seguros Servicio</h1>
+</header>
+
+<section>
+    <h2>En Servicio:</h2>
+    <h2>Tu Tranquilidad Es Nuestro Compromiso</h2>
+</section>
+
+<section id="quienes">
+    <h2>¿Quiénes somos?</h2>
+    <p>Somos una agencia de seguros especializada en la asesoría integral en seguros, comprometida con ofrecer a nuestros clientes un portafolio amplio, sólido y adaptado a diferentes necesidades. Nuestro principal enfoque es brindar un servicio cercano, transparente y confiable, acompañando a cada cliente en el proceso de identificar y elegir la mejor opción de protección. Más que vender seguros, buscamos generar tranquilidad, guiando de manera experta cada decisión para asegurar que cada persona o empresa cuente con la cobertura ideal según su realidad y objetivos.
+</p>
+</section>
+
+<section id="empresas">
+    <h2>Empresas Aliadas</h2>
+
+    <div class="carrusel-container">
+        <button class="prev">⬅</button>
+
+        <div class="carrusel">
+    <div class="track">
+        <img src="img/empresa1.png">
+        <img src="img/empresa2.png">
+        <img src="img/empresa3.png">
+        <img src="img/empresa4.png">
+        <img src="img/empresa5.png">
+        <img src="img/empresa6.png">
+        <img src="img/empresa7.png">
+        <img src="img/empresa8.png">
+        <img src="img/empresa9.png">
+        <img src="img/empresa10.png">
+    </div>
+</div>
+
+        <button class="next">➡</button>
+    </div>
+</section>
+<section id="beneficios">
+    <h2>Beneficios de cotizar con nosotros</h2>
+    <div class="beneficios-container">
+
+        <button class="prev-b">⬅</button>
+
+        <div class="beneficios-carrusel">
+            <div class="beneficios-track">
+
+                <div class="beneficio">
+                    <img src="img/beneficio1.png">
+                    <p>Cotizacion en 5 min por whatsapp</p>
+                </div>
+                <div class="beneficio">
+                    <img src="img/beneficio2.png">
+                    <p>Ajustado a tu presupuesto</p>
+                </div>
+                <div class="beneficio">
+                    <img src="img/beneficio3.png">
+                    <p>No vendemos el mismo paquete que todos</p>
+                </div>
+                <div class="beneficio">
+                    <img src="img/beneficio4.png">
+                    <p>Te ayudamos con el reclamo si tienes un siniestro</p>
+                </div>
+                <div class="beneficio">
+                    <img src="img/beneficio5.png">
+                    <p>Atención 24/7 por tu acesor</p>
+                </div>
+
+            </div>
+        </div>
+
+        <button class="next-b">➡</button>
+
+    </div>
+</section>
+<section id="seguro">
+    <h2>¿Que seguro buscas?</h2>
+
+    <div class="seguros-container">
+
+        <div class="seguro-box">
+            <h3>Personal</h3>
+            <ul>
+                <li>Autos</li>
+                <li>Viajes</li>
+                <li>Arriendo</li>
+                <li>Pyme</li>
+                <li>Hogar</li>
+                <li>Plan universidad</li>
+            </ul>
+        </div>
+
+        <div class="seguro-box">
+            <h3>Empresarial</h3>
+            <ul>
+                <li>Empresas</li>
+                <li>ARL</li>
+                <li>Colectivos</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+<section id="cotizar">
+    <h2>Quiero cotizar</h2>
+
+    <div class="cotizar-container">
+
+        <form class="formulario" action="https://formsubmit.co/contacto@servizioseguros.com" method="POST">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="text" name="documento" placeholder="Documento" required>
+    <input type="email" name="correo" placeholder="Correo Electrónico" required>
+    <input type="text" name="telefono" placeholder="Teléfono" required>
+    <input type="hidden" name="_subject" value="Nueva cotización desde la web">
+
+    <select name="ciudad" required>
+        <option value="">Ciudad</option>
+        <option>Bogotá</option>
+        <option>Chapinero</option>
+        <option>Suba</option>
+        <option>Usaquén</option>
+        <option>Engativá</option>
+        <option>Bosa</option>
+        <option>Kennedy</option>
+        <option>Fontibón</option>
+        <option>San Cristóbal</option>
+        <option>Usme</option>
+        <option>Santa Fe</option>
+        <option>Barrios Unidos</option>
+        <option>Teusaquillo</option>
+        <option>Puente Aranda</option>
+        <option>Rafael Uribe</option>
+        <option>Ciudad Bolívar</option>
+        <option>Sumapaz</option>
+    </select>
+
+    <select name="seguro" required>
+        <option value="">Tipo de Seguro</option>
+        <option>Autos</option>
+        <option>Viajes</option>
+        <option>Arriendo</option>
+        <option>Pyme</option>
+        <option>Hogar</option>
+        <option>Plan universidad</option>
+        <option>Empresas</option>
+        <option>ARL</option>
+        <option>Colectivos</option>
+        <option>Otro</option>
+    </select>
+
+    <textarea name="detalle" placeholder="Detalle:"></textarea>
+
+    <div class="mensaje-error" id="errorMsg">Debes completar los datos</div>
+
+    <input type="hidden" name="_next" value="gracias.html">
+    <input type="hidden" name="_captcha" value="false">
+
+    <button type="submit">Cotizar</button>
+
+</form>
+        </div>
+
+    </div>
+</section>
+<a href="https://wa.me/573016592623" class="whatsapp" target="_blank">
+    <img src="img/whatsapp.png" width="40">
+</a>
+<script>
+let track = document.querySelector('.track');
+let index = 0;
+
+let carrusel = document.querySelector('.carrusel');
+
+document.querySelector('.next').onclick = () => {
+    let width = carrusel.clientWidth; // 🔥 tamaño real
+
+    index++;
+    if (index >= track.children.length) {
+        index = 0;
+    }
+
+    track.style.transform = `translateX(-${index * width}px)`;
+};
+
+document.querySelector('.prev').onclick = () => {
+    let width = carrusel.clientWidth;
+
+    index--;
+    if (index < 0) {
+        index = track.children.length - 1;
+    }
+
+    track.style.transform = `translateX(-${index * width}px)`;
+};
+</script>
+<script>
+let trackB = document.querySelector('.beneficios-track');
+let indexB = 0;
+
+let contenedorB = document.querySelector('.beneficios-carrusel');
+
+document.querySelector('.next-b').onclick = () => {
+    let width = contenedorB.clientWidth;
+
+    indexB++;
+    if (indexB >= trackB.children.length) {
+        indexB = 0;
+    }
+
+    trackB.style.transform = `translateX(-${indexB * width}px)`;
+};
+
+document.querySelector('.prev-b').onclick = () => {
+    let width = contenedorB.clientWidth;
+
+    indexB--;
+    if (indexB < 0) {
+        indexB = trackB.children.length - 1;
+    }
+
+    trackB.style.transform = `translateX(-${indexB * width}px)`;
+};
+</script>
+<script>
+function validarFormulario() {
+    let inputs = document.querySelectorAll("#cotizar input, #cotizar select");
+    let error = document.getElementById("errorMsg");
+
+    let valido = true;
+
+    inputs.forEach(input => {
+        if (input.value === "") {
+            input.style.border = "2px solid red";
+            valido = false;
+        } else {
+            input.style.border = "2px solid #ccc";
+        }
+    });
+
+    if (!valido) {
+        error.style.display = "block";
+    } else {
+        error.style.display = "none";
+        window.location.href = "gracias.html";
+    }
+}
+</script>
+<footer>
+    <p>contacto@servizioseguros.com</p>
+    <p>+57 301 659 2623</p>
+    <p>calle 90 #13A20 Bogotá Colombia</p>
+    <p class="copy">© 2026 Agencia de seguros Servizio. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>
