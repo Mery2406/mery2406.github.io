@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Panel Admi</title>
+</head>
+<body>
+
+<h2>Clientes Registrados</h2>
+
+<ul id="lista"></ul>
+
+<button onclick="cerrarSesion()">Cerrar sesión</button>
+
+<script>
+if (localStorage.getItem("logueado") !== "true") {
+    window.location.href = "login.html";
+}
+let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+
+function mostrarClientes() {
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    clientes.forEach((c, index) => {
+        let item = document.createElement("li");
+        item.innerHTML = `
+            ${c.nombre} - ${c.telefono} - ${c.seguro}
+            <button onclick="eliminar(${index})">Eliminar</button>
+        `;
+        lista.appendChild(item);
+    });
+}
+
+function eliminar(index) {
+    clientes.splice(index, 1);
+    localStorage.setItem("clientes", JSON.stringify(clientes));
+    mostrarClientes();
+}
+
+function cerrarSesion() {
+    localStorage.removeItem("logueado");
+    window.location.href = "login.html";
+}
+
+mostrarClientes();
+</script>
+
+</body>
+</html>
