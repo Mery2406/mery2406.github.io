@@ -623,6 +623,15 @@ document.querySelector(".formulario").addEventListener("submit", function(e) {
 
 });
 </script>
+<script>
+document.addEventListener("keydown", function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "a") {
+        e.preventDefault();
+        window.location.href = "login.html";
+    }
+
+});
+</script>
 <footer>
     <p>contacto@servizioseguros.com</p>
     <p>+57 301 659 2623</p>
