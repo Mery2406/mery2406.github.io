@@ -538,11 +538,10 @@ let index = 0;
 let carrusel = document.querySelector('.carrusel');
 
 document.querySelector('.next').onclick = () => {
-<<<<<<< HEAD
+
     let width = carrusel.clientWidth; 
-=======
-    let width = carrusel.clientWidth; // 🔥 tamaño real
->>>>>>> 98b3186345d26665b85e0f63265dadce56805b47
+    let width = carrusel.clientWidth; 
+
 
     index++;
     if (index >= track.children.length) {
@@ -634,7 +633,7 @@ document.querySelector(".formulario").addEventListener("submit", function(e) {
 </script>
 <script>
 document.addEventListener("keydown", function(e) {
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "a") {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "q") {
         e.preventDefault();
         window.location.href = "login.html";
     }
