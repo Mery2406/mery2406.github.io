@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><title>Seguros en Colombia | Agencia de Seguros Servicio</title></title>
-<title>Agencia de Seguros Servicio</title>
+<title><title>Seguros en Colombia | Agencia de Seguros Servicio</title>
 <meta name="description" content="Agencia de seguros Servizio en Bogotá. Cotiza seguros de autos, hogar, empresas, ARL y más con asesoría personalizada.">
 <meta name="keywords" content="seguros, seguros Bogotá, seguros autos, seguros hogar, ARL, seguros empresas, cotizar seguros, agencia de seguros">
 <meta name="author" content="Agencia de Seguros Servizio">
@@ -168,11 +167,7 @@ section:first-of-type {
 }
 
 .seguro-box ul {
-<<<<<<< HEAD
-    list-style: disc;
-=======
-    list-style: disc; /* 🔥 puntos en vez de rayas */
->>>>>>> 98b3186345d26665b85e0f63265dadce56805b47
+    list-style: disc; 
     text-align: left;
     padding-left: 20px;
 }
@@ -532,35 +527,43 @@ footer p {
     <img src="img/whatsapp.png" width="40">
 </a>
 <script>
-let track = document.querySelector('.track');
-let index = 0;
+document.addEventListener("DOMContentLoaded", function () {
 
-let carrusel = document.querySelector('.carrusel');
+    let track = document.querySelector('.track');
+    let carrusel = document.querySelector('.carrusel');
+    let next = document.querySelector('.next');
+    let prev = document.querySelector('.prev');
 
-document.querySelector('.next').onclick = () => {
+    let index = 0;
 
-    let width = carrusel.clientWidth; 
-    let width = carrusel.clientWidth; 
-
-
-    index++;
-    if (index >= track.children.length) {
-        index = 0;
+    if (!track || !carrusel || !next || !prev) {
+        console.log("Error: no se encontró el carrusel");
+        return;
     }
 
-    track.style.transform = `translateX(-${index * width}px)`;
-};
+    next.addEventListener("click", () => {
+        let width = carrusel.clientWidth;
 
-document.querySelector('.prev').onclick = () => {
-    let width = carrusel.clientWidth;
+        index++;
+        if (index >= track.children.length) {
+            index = 0;
+        }
 
-    index--;
-    if (index < 0) {
-        index = track.children.length - 1;
-    }
+        track.style.transform = `translateX(-${index * width}px)`;
+    });
 
-    track.style.transform = `translateX(-${index * width}px)`;
-};
+    prev.addEventListener("click", () => {
+        let width = carrusel.clientWidth;
+
+        index--;
+        if (index < 0) {
+            index = track.children.length - 1;
+        }
+
+        track.style.transform = `translateX(-${index * width}px)`;
+    });
+
+});
 </script>
 <script>
 let trackB = document.querySelector('.beneficios-track');
@@ -639,7 +642,6 @@ document.addEventListener("keydown", function(e) {
     }
 
 });
-</script>
 </script>
 <footer>
     <p>contacto@servizioseguros.com</p>
