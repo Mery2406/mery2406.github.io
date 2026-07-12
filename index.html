@@ -341,6 +341,55 @@ footer p {
     margin-top: 10px;
     font-size: 12px;
 }
+.hero-text h1 {
+    font-size: 80px;
+    color: #04389d;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.hero-text p {
+    font-size: 34px;
+    color: #111;
+    margin-top: 25px;
+    position: relative;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.hero-text p::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 5px;
+    background: linear-gradient(90deg, #f35b26, #04389d);
+    border-radius: 10px;
+}
+.hero-text h1,
+.hero-text p {
+    text-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+section:first-of-type::before {
+    background: rgba(0, 0, 0, 0.4);
+}
+.hero-text {
+    animation: fadeUp 1.2s ease-out;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 </style>
 </head>
 <body>
@@ -358,13 +407,15 @@ footer p {
 </div>
 
 <header>
-    <img src="img/logo.jpg">
-    <h1>Agencia de Seguros Servicio</h1>
+    <img src="img/sombrilla.svg>
+    <h1>Agencia de Seguros Servizio</h1>
 </header>
 
 <section>
-    <h2>En Servicio:</h2>
-    <h2>Tu Tranquilidad Es Nuestro Compromiso</h2>
+    <div class="hero-text">
+    <h1>En Servizio:</h1>
+    <p>Tu Tranquilidad Es Nuestro Compromiso</p>
+    </div>
 </section>
 
 <section id="quienes">
