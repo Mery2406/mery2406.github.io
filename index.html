@@ -15,6 +15,7 @@
 <meta property="og:description" content="Cotiza seguros de manera rápida y personalizada en Bogotá.">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="icon" href="img/sombrilla.png" type="image/svg+xml">
 
 <style>
 body {
@@ -73,26 +74,58 @@ section:first-of-type {
 }
 #quienes {
     min-height: 100vh;
-    background-color: #e3e8f7;
-
+    background: linear-gradient(135deg, #e3e8f7, #f5f7ff);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.quienes-texto,
+.quienes-img {
+    animation: fadeUp 1s ease;
+}
+@media (max-width: 768px) {
+    .quienes-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .quienes-texto {
+        text-align: center;
+    }
+
+    .quienes-img img {
+        width: 90%;
+    }
 }
 #empresas {
     min-height: 100vh;
-    background-color: #004aad;
-    color: white;
+    background: linear-gradient(135deg, #e3e8f7, #f5f7ff);
+    color: #04389d;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.track img {
+    min-width: 200px;
+    max-width: 200px;
+    height: 100px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.track img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
 #beneficios {
     min-height: 100vh;
-    background-color: #f35b26;
+    background: linear-gradient(135deg, #e3e8f7, #f5f7ff);
     text-align: center;
     padding: 100px 40px;
 }
@@ -130,6 +163,24 @@ section:first-of-type {
     font-size: 26px;
     font-weight: 600;
 }
+.beneficio {
+    min-width: 300px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 0 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.beneficio:hover {
+    transform: translateY(-10px);
+}
+
+.beneficio img {
+    height: 150px;
+    object-fit: contain;
+}
 #seguro {
     min-height: 100vh;
     background-color: #e3e8f7;
@@ -155,26 +206,50 @@ section:first-of-type {
     padding: 40px;
     border-radius: 20px;
     transition: transform 0.3s ease;
-
+    <button class="btn-seguro">Cotizar</button>
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 .seguro-box:hover {
     transform: translateY(-10px);
+    <button class="btn-seguro">Cotizar</button>
 }
 .seguro-box h3 {
     font-size: 28px;
     margin-bottom: 20px;
+    <button class="btn-seguro">Cotizar</button>
 }
 
 .seguro-box ul {
     list-style: disc; 
     text-align: left;
     padding-left: 20px;
+    <button class="btn-seguro">Cotizar</button>
 }
 
 .seguro-box li {
     font-size: 20px;
     margin-bottom: 10px;
+    <button class="btn-seguro">Cotizar</button>
+}
+.btn-seguro {
+    margin-top: 20px;
+    background: linear-gradient(90deg, #f35b26, #04389d);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-seguro:hover {
+    opacity: 0.9;
+}
+.formulario input:focus,
+.formulario textarea:focus,
+.formulario select:focus {
+    border: 2px solid #04389d;
+    box-shadow: 0 0 10px rgba(4,56,157,0.3);
 }
 #cotizar {
     min-height: 100vh;
@@ -390,6 +465,113 @@ section:first-of-type::before {
         transform: translateY(0);
     }
 }
+.hero-text h1 {
+    font-size: 160px;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.6),
+        0 0 20px rgba(243,91,38,0.6),
+        0 0 30px rgba(4,56,157,0.6);
+}
+
+.hero-text p {
+    font-size: 39px;
+    color: #ffffff;
+    margin-top: 25px;
+    position: relative;
+    display: inline-block;
+    font-weight: 500;
+
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.5),
+        0 0 15px rgba(243,91,38,0.5);
+}
+.hero-text {
+    animation: fadeUp 1.2s ease-out;
+
+    max-width: 1000px;
+    text-align: left;
+    margin-left: 180px; 
+}
+@media (max-width: 768px) {
+    .hero-text {
+        margin-left: 20px;
+        text-align: center;
+    }
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 10px rgba(255,255,255,0.6); }
+    50% { text-shadow: 0 0 25px rgba(243,91,38,0.8); }
+    100% { text-shadow: 0 0 10px rgba(255,255,255,0.6); }
+}
+
+.hero-text h1 {
+    animation: glow 3s infinite;
+}
+@media (max-width: 768px) {
+    .hero-text {
+        margin-left: 20px;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 50px;
+    }
+
+    .hero-text p {
+        font-size: 24px;
+    }
+}
+.hero-text {
+    margin-top: -40px; 
+}
+.quienes-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.quienes-texto {
+    max-width: 500px;
+    text-align: left;
+}
+
+.quienes-texto h2 {
+    font-size: 42px;
+    color: #04389d;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.quienes-texto h2::after {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background: #f35b26;
+    display: block;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.quienes-texto p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333;
+}
+.quienes-img img {
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
 </style>
 </head>
 <body>
@@ -419,9 +601,20 @@ section:first-of-type::before {
 </section>
 
 <section id="quienes">
-    <h2>¿Quiénes somos?</h2>
-    <p>Somos una agencia de seguros especializada en la asesoría integral en seguros, comprometida con ofrecer a nuestros clientes un portafolio amplio, sólido y adaptado a diferentes necesidades. Nuestro principal enfoque es brindar un servicio cercano, transparente y confiable, acompañando a cada cliente en el proceso de identificar y elegir la mejor opción de protección. Más que vender seguros, buscamos generar tranquilidad, guiando de manera experta cada decisión para asegurar que cada persona o empresa cuente con la cobertura ideal según su realidad y objetivos.
-</p>
+    <div class="quienes-container">
+
+        <div class="quienes-texto">
+            <h2>¿Quiénes somos?</h2>
+            <p>
+                Somos una agencia de seguros especializada en la asesoría integral en seguros, comprometida con ofrecer a nuestros clientes un portafolio amplio, sólido y adaptado a diferentes necesidades. Nuestro principal enfoque es brindar un servicio cercano, transparente y confiable, acompañando a cada cliente en el proceso de identificar y elegir la mejor opción de protección. Más que vender seguros, buscamos generar tranquilidad, guiando de manera experta cada decisión para asegurar que cada persona o empresa cuente con la cobertura ideal según su realidad y objetivos.
+            </p>
+        </div>
+
+        <div class="quienes-img">
+            <img src="https://via.placeholder.com/400" alt="Equipo de trabajo">
+        </div>
+
+    </div>
 </section>
 
 <section id="empresas">
