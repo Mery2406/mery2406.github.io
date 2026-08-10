@@ -22,6 +22,11 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden; 
+}
 header {
     background-color: #04389d;
     padding: 20px;
@@ -73,12 +78,37 @@ section:first-of-type {
     justify-content: center;
 }
 #quienes {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #e3e8f7, #f5f7ff);
+    position: relative;
+    min-height: 90vh;
+
+    background-image: url("img/Familia.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+.quienes-contenido {
+    position: relative; 
+    z-index: 20; 
+    max-width: 800px;
+    padding: 20px;
+}
+#quienes .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.5); 
+
+    z-index: 10;
 }
 .quienes-texto,
 .quienes-img {
@@ -98,36 +128,131 @@ section:first-of-type {
         width: 90%;
     }
 }
-#empresas {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #e3e8f7, #f5f7ff);
+.quienes-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.quienes-texto {
+    max-width: 500px;
+    text-align: left;
+}
+
+.quienes-texto h2 {
+    font-size: 42px;
     color: #04389d;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.quienes-texto p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333;
+}
+.quienes-img img {
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+#empresas {
+    padding-bottom: 800 !important;
+    margin-bottom: 10 !important;
+}
+
+#beneficios {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+#empresas {
+    min-height: 60vh;
+    background-color: #04389d;
+    color: white;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    padding: 60px 20px;
+    margin-bottom: 0;
 }
-.track img {
-    min-width: 200px;
-    max-width: 200px;
-    height: 100px;
+
+#empresas h2 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+
+#empresas .carrusel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    margin-top: -20px; 
+}
+
+#empresas .carrusel {
+    overflow: hidden;
+    width: 500px;
+    height: 250px;
+    border-radius: 10px;
+    position: relative;
+    margin: 0 auto;
+    background-color: #004aad;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+#empresas .track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: max-content;
+}
+
+#empresas .track img {
+    min-width: 500px;
+    max-width: 500px;
+    height: 250px;
     object-fit: contain;
+
     filter: grayscale(100%);
     opacity: 0.7;
     transition: all 0.3s ease;
 }
 
-.track img:hover {
+#empresas .track img:hover {
     filter: grayscale(0%);
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.05);
+}
+
+#empresas button {
+    background: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#empresas button:hover {
+    background: #f35b26;
+    color: white;
 }
 #beneficios {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #e3e8f7, #f5f7ff);
-    text-align: center;
-    padding: 100px 40px;
+    margin-top: 0;
+}
+#beneficios {
+    background-color: #e3e8f7;
+    padding: 40px 20px;
+    margin: 0;
 }
 
 .beneficios-container {
@@ -137,28 +262,12 @@ section:first-of-type {
     gap: 20px;
 }
 
-.beneficios-carrusel {
-    overflow: hidden;
-    width: 650px;
-}
-
-.beneficios-track {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.beneficio {
-    min-width: 650px;
-    text-align: center;
-}
-
 .beneficio img {
     width: 100%;
     height: 320px;
     object-fit: cover; 
     margin-bottom: 20px;
 }
-
 .beneficio p {
     font-size: 26px;
     font-weight: 600;
@@ -180,6 +289,61 @@ section:first-of-type {
 .beneficio img {
     height: 150px;
     object-fit: contain;
+}
+@media (max-width: 900px) {
+    .beneficios-grid {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 500px) {
+    .beneficios-grid {
+        grid-template-columns: 1fr; 
+    }
+}
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.beneficio-card {
+    background: white;
+    border-radius: 0;
+    padding: 30px 20px;
+    text-align: center;
+    color: #333;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.beneficio-card img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+.beneficio-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.beneficio-card p {
+    font-size: 14px;
+}
+.beneficio-card {
+    transition: 0.3s;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-8px);
 }
 #seguro {
     min-height: 100vh;
@@ -206,30 +370,25 @@ section:first-of-type {
     padding: 40px;
     border-radius: 20px;
     transition: transform 0.3s ease;
-    <button class="btn-seguro">Cotizar</button>
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 .seguro-box:hover {
     transform: translateY(-10px);
-    <button class="btn-seguro">Cotizar</button>
 }
 .seguro-box h3 {
     font-size: 28px;
     margin-bottom: 20px;
-    <button class="btn-seguro">Cotizar</button>
 }
 
 .seguro-box ul {
     list-style: disc; 
     text-align: left;
     padding-left: 20px;
-    <button class="btn-seguro">Cotizar</button>
 }
 
 .seguro-box li {
     font-size: 20px;
     margin-bottom: 10px;
-    <button class="btn-seguro">Cotizar</button>
 }
 .btn-seguro {
     margin-top: 20px;
@@ -366,7 +525,7 @@ button:hover {
     left: -200px;
     width: 200px;
     height: 100%;
-    background-color: #004aad;
+    background-color: #04389d;
     color: white;
     padding-top: 60px;
     transition: 0.3s;
@@ -432,16 +591,20 @@ footer p {
     display: inline-block;
     font-weight: 500;
 }
-
 .hero-text p::after {
     content: "";
     position: absolute;
-    left: 50%;
+    left: 41%;
     bottom: -10px;
     transform: translateX(-50%);
     width: 80%;
-    height: 5px;
-    background: linear-gradient(90deg, #f35b26, #04389d);
+    background: white;
+    box-shadow:
+        0 0 10px rgba(255,255,255,0.8),
+        0 0 20px rgba(243,91,38,0.8),
+        0 0 30px rgba(4,56,157,0.8);
+
+    height: 4px;
     border-radius: 10px;
 }
 .hero-text h1,
@@ -527,51 +690,107 @@ section:first-of-type::before {
     }
 }
 .hero-text {
-    margin-top: -40px; 
+    margin-top: -370px; 
 }
-.quienes-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-    max-width: 1100px;
-    margin: auto;
-    flex-wrap: wrap;
-}
-
-.quienes-texto {
-    max-width: 500px;
-    text-align: left;
-}
-
-.quienes-texto h2 {
+section h2 {
     font-size: 42px;
     color: #04389d;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+h2 {
     position: relative;
+    display: inline-block;
 }
 
-.quienes-texto h2::after {
+h2::after {
     content: "";
-    width: 60px;
+    display: block;
+    width: 50%;
     height: 4px;
     background: #f35b26;
-    display: block;
-    margin-top: 10px;
+    margin: 8px auto 0;
     border-radius: 5px;
 }
+.btn-hero {
+    display: inline-block;
+    margin-top: 60px;
+    padding: 18px 40px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
 
-.quienes-texto p {
-    font-size: 18px;
-    line-height: 1.7;
-    color: #333;
-}
-.quienes-img img {
-    width: 400px;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-}
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 8px;
+    background: transparent;
 
+    position: relative;
+    overflow: hidden;
+
+    /* brillo base */
+    text-shadow:
+        0 0 8px rgba(255,255,255,0.6),
+        0 0 15px rgba(243,91,38,0.6),
+        0 0 25px rgba(4,56,157,0.6);
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,0.2),
+        0 0 20px rgba(243,91,38,0.2),
+        0 0 30px rgba(4,56,157,0.2);
+
+    transition: 0.3s;
+}
+.btn-hero::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+
+    transform: rotate(25deg);
+    animation: brilloMove 3s linear infinite;
+}
+@keyframes brilloMove {
+    0% {
+        transform: translateX(-100%) rotate(25deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(25deg);
+    }
+}
+.btn-hero:hover {
+    transform: scale(1.05);
+
+    border-color: white;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.6),
+        0 0 40px rgba(243,91,38,0.7),
+        0 0 60px rgba(4,56,157,0.7);
+}
+.btn-hero:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.btn-hero:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.6),
+        0 0 30px rgba(243,91,38,0.7),
+        0 0 50px rgba(4,56,157,0.7);
+
+    border-color: white;
+}
 </style>
 </head>
 <body>
@@ -597,24 +816,19 @@ section:first-of-type::before {
     <div class="hero-text">
         <h1>En Servizio</h1>
         <p>Tu tranquilidad es nuestro compromiso</p>
+        <a href="#cotizar" class="btn-hero">Cotiza tu seguro</a>
     </div>
 </section>
 
 <section id="quienes">
-    <div class="quienes-container">
+    <div class="overlay"></div>
 
-        <div class="quienes-texto">
+        <div class="quienes-contenido">
             <h2>¿Quiénes somos?</h2>
             <p>
                 Somos una agencia de seguros especializada en la asesoría integral en seguros, comprometida con ofrecer a nuestros clientes un portafolio amplio, sólido y adaptado a diferentes necesidades. Nuestro principal enfoque es brindar un servicio cercano, transparente y confiable, acompañando a cada cliente en el proceso de identificar y elegir la mejor opción de protección. Más que vender seguros, buscamos generar tranquilidad, guiando de manera experta cada decisión para asegurar que cada persona o empresa cuente con la cobertura ideal según su realidad y objetivos.
             </p>
         </div>
-
-        <div class="quienes-img">
-            <img src="https://via.placeholder.com/400" alt="Equipo de trabajo">
-        </div>
-
-    </div>
 </section>
 
 <section id="empresas">
@@ -642,39 +856,31 @@ section:first-of-type::before {
     </div>
 </section>
 <section id="beneficios">
-    <h2>Beneficios de cotizar con nosotros</h2>
-    <div class="beneficios-container">
+    <div class="beneficios-grid">
 
-        <button class="prev-b">⬅</button>
-
-        <div class="beneficios-carrusel">
-            <div class="beneficios-track">
-
-                <div class="beneficio">
-                    <img src="img/beneficio1.png">
-                    <p>Cotizacion en 5 min por whatsapp</p>
-                </div>
-                <div class="beneficio">
-                    <img src="img/beneficio2.png">
-                    <p>Ajustado a tu presupuesto</p>
-                </div>
-                <div class="beneficio">
-                    <img src="img/beneficio3.png">
-                    <p>No vendemos el mismo paquete que todos</p>
-                </div>
-                <div class="beneficio">
-                    <img src="img/beneficio4.png">
-                    <p>Te ayudamos con el reclamo si tienes un siniestro</p>
-                </div>
-                <div class="beneficio">
-                    <img src="img/beneficio5.png">
-                    <p>Atención 24/7 por tu acesor</p>
-                </div>
-
-            </div>
+        <div class="beneficio-card">
+            <img src="img/beneficio1.png">
+            <h3>Cotizacion en 5 min por whatsapp</h3>
+            <p>Ayudamos a nuestros clientes a aprovechar al máximo sus seguros.</p>
         </div>
 
-        <button class="next-b">➡</button>
+        <div class="beneficio-card">
+            <img src="img/beneficio2.png">
+            <h3>Ajustado a tu presupuesto</h3>
+            <p>Servicio post venta de clase mundial. Atención inmediata y personalizada.</p>
+        </div>
+
+        <div class="beneficio-card">
+            <img src="img/beneficio3.png">
+            <h3>No vendemos el mismo paquete que todos</h3>
+            <p>Te ofrecemos siempre el mejor precio del mercado.</p>
+        </div>
+
+        <div class="beneficio-card">
+            <img src="img/beneficio4.png">
+            <h3>Te ayudamos con el reclamo si tienes un siniestro</h3>
+            <p>Te ayudamos a elegir la mejor opción para ti y tu familia.</p>
+        </div>
 
     </div>
 </section>
@@ -701,6 +907,8 @@ section:first-of-type::before {
                 <li>Empresas</li>
                 <li>ARL</li>
                 <li>Colectivos</li>
+                <li>Segimiento satelital</li>
+                <li>Cyberseguridad</li>
             </ul>
         </div>
 
@@ -711,12 +919,16 @@ section:first-of-type::before {
 
     <div class="cotizar-container">
 
-        <form class="formulario" action="https://formsubmit.co/contacto@servizioseguros.com" method="POST">
+     <form class="formulario"
+     action="https://formsubmit.co/contacto@servizioseguros.com"
+    method="POST">
     <input type="text" name="nombre" placeholder="Nombre" required>
     <input type="text" name="documento" placeholder="Documento" required>
     <input type="email" name="correo" placeholder="Correo Electrónico" required>
     <input type="text" name="telefono" placeholder="Teléfono" required>
     <input type="hidden" name="_subject" value="Nueva cotización desde la web">
+
+<input type="hidden" name="_template" value="table">
 
     <select name="ciudad" required>
         <option value="">Ciudad</option>
@@ -761,7 +973,16 @@ section:first-of-type::before {
     <input type="hidden" name="_captcha" value="false">
 
     <button type="submit">Cotizar</button>
-
+<div id="mensajeExito" style="
+    display:none;
+    background:#d4edda;
+    color:#155724;
+    padding:15px;
+    border-radius:10px;
+    margin-top:15px;
+    font-weight:bold;
+">
+</div>
 </form>
         </div>
 
@@ -865,16 +1086,44 @@ function validarFormulario() {
 <script>
 document.querySelector(".formulario").addEventListener("submit", function(e) {
 
-    let datos = {
-        nombre: this.nombre.value,
-        telefono: this.telefono.value,
-        seguro: this.seguro.value
-    };
+    e.preventDefault(); 
+
+    let nombre = this.nombre.value;
+    let documento = this.documento.value;
+    let correo = this.correo.value;
+    let telefono = this.telefono.value;
+    let ciudad = this.ciudad.value;
+    let seguro = this.seguro.value;
+    let detalle = this.detalle.value;
+
+    let mensaje = `Hola, quiero cotizar un seguro:%0A
+Nombre: ${nombre}%0A
+Documento: ${documento}%0A
+Correo: ${correo}%0A
+Teléfono: ${telefono}%0A
+Ciudad: ${ciudad}%0A
+Seguro: ${seguro}%0A
+Detalle: ${detalle}`;
+
+    let numero = "573016592623";
+    let url = `https://wa.me/${numero}?text=${mensaje}`;
+
+    let msg = document.getElementById("mensajeExito");
+    msg.innerHTML = "✅ Cotización enviada correctamente";
+    msg.style.display = "block";
 
     let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
-    clientes.push(datos);
-
+    clientes.push({ nombre, telefono, seguro });
     localStorage.setItem("clientes", JSON.stringify(clientes));
+
+    fetch(this.action, {
+        method: "POST",
+        body: new FormData(this)
+    });
+
+    setTimeout(() => {
+        window.open(url, "_blank");
+    }, 1500);
 
 });
 </script>
